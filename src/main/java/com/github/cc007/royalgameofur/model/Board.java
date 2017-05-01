@@ -4,15 +4,17 @@ import com.github.cc007.royalgameofur.model.tiles.NormalTile;
 import com.github.cc007.royalgameofur.model.tiles.RosetteTile;
 import com.github.cc007.royalgameofur.model.tiles.Tile;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by Rik on 29-4-2017.
  */
 public class Board {
-    Map<String, Tile> tiles;
+    private Map<String, Tile> tiles;
 
     public Board() {
+        tiles = new HashMap<>();
         createTiles();
     }
 
@@ -32,11 +34,11 @@ public class Board {
             tileP1 = new NormalTile();
             tileP2 = new NormalTile();
 
-            previousTileP1.setNext(Players.PLAYER1, tileP1);
-            previousTileP1.setNext(Players.PLAYER2, null);
+            previousTileP1.setNext(Players.PLAYER1.getPlayer(), tileP1);
+            previousTileP1.setNext(Players.PLAYER2.getPlayer(), null);
 
-            previousTileP2.setNext(Players.PLAYER1, null);
-            previousTileP2.setNext(Players.PLAYER2, tileP2);
+            previousTileP2.setNext(Players.PLAYER1.getPlayer(), null);
+            previousTileP2.setNext(Players.PLAYER2.getPlayer(), tileP2);
 
 
             tiles.put("P1Pos" + i, tileP1);
@@ -50,11 +52,11 @@ public class Board {
         tileP1 = new RosetteTile();
         tileP2 = new RosetteTile();
 
-        previousTileP1.setNext(Players.PLAYER1, tileP1);
-        previousTileP1.setNext(Players.PLAYER2, null);
+        previousTileP1.setNext(Players.PLAYER1.getPlayer(), tileP1);
+        previousTileP1.setNext(Players.PLAYER2.getPlayer(), null);
 
-        previousTileP2.setNext(Players.PLAYER1, null);
-        previousTileP2.setNext(Players.PLAYER2, tileP2);
+        previousTileP2.setNext(Players.PLAYER1.getPlayer(), null);
+        previousTileP2.setNext(Players.PLAYER2.getPlayer(), tileP2);
 
         tiles.put("P1Pos4", tileP1);
         tiles.put("P2Pos4", tileP2);
@@ -65,11 +67,11 @@ public class Board {
         //5th tile
         Tile tile = new NormalTile();
 
-        previousTileP1.setNext(Players.PLAYER1, tile);
-        previousTileP1.setNext(Players.PLAYER2, null);
+        previousTileP1.setNext(Players.PLAYER1.getPlayer(), tile);
+        previousTileP1.setNext(Players.PLAYER2.getPlayer(), null);
 
-        previousTileP2.setNext(Players.PLAYER1, null);
-        previousTileP2.setNext(Players.PLAYER2, tile);
+        previousTileP2.setNext(Players.PLAYER1.getPlayer(), null);
+        previousTileP2.setNext(Players.PLAYER2.getPlayer(), tile);
 
         tiles.put("P1Pos6", tile);
         tiles.put("P2Pos6", tile);
@@ -80,8 +82,8 @@ public class Board {
         for (int i = 6; i <= 7; i++) {
             tile = new NormalTile();
 
-            previousTile.setNext(Players.PLAYER1, tile);
-            previousTile.setNext(Players.PLAYER2, tile);
+            previousTile.setNext(Players.PLAYER1.getPlayer(), tile);
+            previousTile.setNext(Players.PLAYER2.getPlayer(), tile);
 
 
             tiles.put("P1Pos" + i, tile);
@@ -93,8 +95,8 @@ public class Board {
         //8th tile
         tile = new RosetteTile();
 
-        previousTile.setNext(Players.PLAYER1, tile);
-        previousTile.setNext(Players.PLAYER2, tile);
+        previousTile.setNext(Players.PLAYER1.getPlayer(), tile);
+        previousTile.setNext(Players.PLAYER2.getPlayer(), tile);
 
         tiles.put("P1Pos8", tile);
         tiles.put("P2Pos8", tile);
@@ -105,8 +107,8 @@ public class Board {
         for (int i = 9; i <= 12; i++) {
             tile = new NormalTile();
 
-            previousTile.setNext(Players.PLAYER1, tile);
-            previousTile.setNext(Players.PLAYER2, tile);
+            previousTile.setNext(Players.PLAYER1.getPlayer(), tile);
+            previousTile.setNext(Players.PLAYER2.getPlayer(), tile);
 
 
             tiles.put("P1Pos" + i, tile);
@@ -119,8 +121,8 @@ public class Board {
         tileP1 = new NormalTile();
         tileP2 = new NormalTile();
 
-        previousTile.setNext(Players.PLAYER1, tileP1);
-        previousTile.setNext(Players.PLAYER2, tileP2);
+        previousTile.setNext(Players.PLAYER1.getPlayer(), tileP1);
+        previousTile.setNext(Players.PLAYER2.getPlayer(), tileP2);
 
         tiles.put("P1Pos13", tileP1);
         tiles.put("P2Pos13", tileP2);
@@ -132,13 +134,17 @@ public class Board {
         tileP1 = new NormalTile();
         tileP2 = new NormalTile();
 
-        previousTileP1.setNext(Players.PLAYER1, tileP1);
-        previousTileP1.setNext(Players.PLAYER2, null);
+        previousTileP1.setNext(Players.PLAYER1.getPlayer(), tileP1);
+        previousTileP1.setNext(Players.PLAYER2.getPlayer(), null);
 
-        previousTileP2.setNext(Players.PLAYER1, null);
-        previousTileP2.setNext(Players.PLAYER2, tileP2);
+        previousTileP2.setNext(Players.PLAYER1.getPlayer(), null);
+        previousTileP2.setNext(Players.PLAYER2.getPlayer(), tileP2);
 
         tiles.put("P1Pos14", tileP1);
         tiles.put("P2Pos14", tileP2);
+    }
+
+    public Map<String, Tile> getTiles() {
+        return tiles;
     }
 }

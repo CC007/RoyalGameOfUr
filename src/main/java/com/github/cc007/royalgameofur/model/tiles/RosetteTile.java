@@ -1,6 +1,7 @@
 package com.github.cc007.royalgameofur.model.tiles;
 
 import com.github.cc007.royalgameofur.model.Piece;
+import com.github.cc007.royalgameofur.model.Turn;
 
 import java.awt.*;
 
@@ -15,12 +16,19 @@ public class RosetteTile extends Tile {
     }
 
     @Override
-    public Turn onEnter(Piece piece, Tile previousTile) {
+    public Turn onEnter(Piece piece) {
         if (hasPiece()) {
             return new Turn(false, false);
         }
-        previousTile.setPiece(null);
         setPiece(piece);
         return new Turn(true, true);
+    }
+
+    @Override
+    public boolean canEnter(Piece piece) {
+        if (hasPiece()) {
+            return false;
+        }
+        return true;
     }
 }

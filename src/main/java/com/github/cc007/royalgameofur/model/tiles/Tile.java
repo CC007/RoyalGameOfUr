@@ -2,6 +2,7 @@ package com.github.cc007.royalgameofur.model.tiles;
 
 import com.github.cc007.royalgameofur.model.Piece;
 import com.github.cc007.royalgameofur.model.Players;
+import com.github.cc007.royalgameofur.model.Turn;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -20,7 +21,13 @@ public abstract class Tile {
 
     public abstract Image getTileImage();
 
-    public abstract Turn onEnter(Piece piece, Tile previousTile);
+    public abstract Turn onEnter(Piece piece);
+
+    public abstract boolean canEnter(Piece piece);
+
+    public boolean hasNext(Players.Player player){
+        return next.get(player) != null;
+    }
 
     public Tile getNext(Players.Player player) {
         return next.get(player);

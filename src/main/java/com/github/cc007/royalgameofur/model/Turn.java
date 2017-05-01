@@ -1,4 +1,4 @@
-package com.github.cc007.royalgameofur.model.tiles;
+package com.github.cc007.royalgameofur.model;
 
 /**
  * Created by Rik on 29-4-2017.

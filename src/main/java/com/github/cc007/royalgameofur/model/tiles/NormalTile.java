@@ -1,6 +1,7 @@
 package com.github.cc007.royalgameofur.model.tiles;
 
 import com.github.cc007.royalgameofur.model.Piece;
+import com.github.cc007.royalgameofur.model.Turn;
 
 import java.awt.*;
 
@@ -14,17 +15,23 @@ public class NormalTile extends Tile {
     }
 
     @Override
-    public Turn onEnter(Piece piece, Tile previousTile) {
+    public Turn onEnter(Piece piece) {
         if (hasPiece()) {
             if (getPiece().getPlayer() == piece.getPlayer()) {
                 return new Turn(false, false);
-            }
-            else{
+            } else {
                 getPiece().getPlayer().returnPiece(getPiece());
             }
         }
-        previousTile.setPiece(null);
         setPiece(piece);
         return new Turn(true, false);
+    }
+
+    @Override
+    public boolean canEnter(Piece piece) {
+        if (hasPiece() && getPiece().getPlayer() == piece.getPlayer()) {
+            return false;
+        }
+        return true;
     }
 }
